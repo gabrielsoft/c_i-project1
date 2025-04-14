@@ -64,7 +64,7 @@
   </div><br>
 
   <button onclick="capture()">Capturar Tira</button>
-  <button onclick="limparHistorico()">Limpar HistÃ³rico</button>
+  <button onclick="limparHistorico()">Limpar Histórico</button>
 
   <canvas id="canvas" style="display:none;"></canvas>
   <img id="snapshot" alt="Imagem capturada" style="display:none;" />
@@ -98,7 +98,7 @@
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
         video.srcObject = stream;
       } catch (err) {
-        resultado.innerText = "Erro ao acessar a cÃ¢mera: " + err.message;
+        resultado.innerText = "Erro ao acessar a câmera: " + err.message;
       }
     }
 
@@ -122,7 +122,7 @@
       let status = "Leitura estÃ¡vel.";
       let corFundo = "#e0ffe0";
       if (r > g && r > b) {
-        status = "Risco de infecÃ§Ã£o detectado (vermelho predominante)";
+        status = "Risco de infecção detectado (vermelho predominante)";
         corFundo = "#ffe0e0";
       } else if (b > r && b > g) {
         status = "pH elevado detectado (azul predominante)";
@@ -144,11 +144,11 @@
     function mostrarHistorico() {
       const historico = JSON.parse(localStorage.getItem('historico')) || [];
       if (historico.length === 0) {
-        historicoDiv.innerHTML = "<p>Sem histÃ³rico de leituras.</p>";
+        historicoDiv.innerHTML = "<p>Sem histórico de leituras.</p>";
         return;
       }
 
-      let html = "<h4>HistÃ³rico de Leitura:</h4><ul>";
+      let html = "<h4>Histórico de Leitura:</h4><ul>";
       historico.slice(0, 5).forEach(item => {
         html += `<li>${item}</li>`;
       });
