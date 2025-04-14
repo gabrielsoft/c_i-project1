@@ -85,9 +85,22 @@
     const historicoDiv = document.getElementById('historico');
     const context = canvas.getContext('2d');
 
-    navigator.mediaDevices.getUserMedia({ video: true })
+   /* navigator.mediaDevices.getUserMedia({ video: true })
       .then(stream => { video.srcObject = stream; })
-      .catch(err => { resultado.innerText = 'Erro ao acessar câmera: ' + err; });
+      .catch(err => { resultado.innerText = 'Erro ao acessar câmera: ' + err; }); */
+
+    navigator.mediaDevices.getUserMedia({
+  video: { facingMode: { exact: "environment" } }
+})
+.then(stream => { video.srcObject = stream; })
+.catch(err => {
+  // fallback para frontal caso a traseira não seja suportada
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => { video.srcObject = stream; })
+    .catch(error => {
+      resultado.innerText = 'Erro ao acessar câmera: ' + error;
+    });
+});
 
     function capture() {
       canvas.width = video.videoWidth;
