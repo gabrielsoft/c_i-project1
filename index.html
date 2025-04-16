@@ -128,10 +128,10 @@
         status = "Ferida com pH ácido (vermelho predominante) - sem sinais de infecção!";
         corFundo = "#e0ffe0"; // verde claro para normal
       }
-      else{
+     /* else{
         status = "Leitura intermediária ou não conclusiva".
           corFundo = "#f0f0f0"; // neutro
-      }
+      }*/
 
       resultado.innerHTML = `<strong>${status}</strong><br>Cor detectada: ${cor}`;
       resultado.style.backgroundColor = corFundo;
