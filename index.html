@@ -121,12 +121,16 @@
 
       let status = "Leitura estável.";
       let corFundo = "#e0ffe0";
-      if (r > g && r > b) {
-        status = "Risco de infecção detectado (vermelho predominante)";
-        corFundo = "#ffe0e0";
-      } else if (b > r && b > g) {
-        status = "pH elevado detectado (azul predominante)";
-        corFundo = "#e0e0ff";
+      if (b > r && b > g) {
+        status = "Risco de infecção detectado (azul predominante)!";
+        corFundo = "#ffe0e0"; // vermelho claro para alerta
+      } else if (r > b && r > g) {
+        status = "Ferida com pH ácido (vermelho predominante) - sem sinais de infecção!";
+        corFundo = "#e0ffe0"; // verde claro para normal
+      }
+      else{
+        status = "Leitura intermediária ou não conclusiva".
+          corFundo = "#f0f0f0"; // neutro
       }
 
       resultado.innerHTML = `<strong>${status}</strong><br>Cor detectada: ${cor}`;
